@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>FoodShare - Available Food</title>
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+          rel="stylesheet">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f5f6f8;
+            color: #30343b;
+        }
+
+
+        /* NAVBAR */
+
+        .navbar {
+            height: 72px;
+            background: #f9f7f2;
+            border-bottom: 1px solid #e7e3dc;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 0 6%;
+
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+
+            font-size: 22px;
+            font-weight: 800;
+            color: #30343b;
+        }
+
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+
+            border-radius: 11px;
+
+            background: #9a654c;
+            color: white;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+
+        .logo span {
+            color: #9a654c;
+        }
+
+
+        .back-btn {
+            text-decoration: none;
+
+            color: #77736e;
+
+            border: 1px solid #ddd8cf;
+
+            padding: 9px 14px;
+
+            border-radius: 8px;
+
+            font-size: 12px;
+            font-weight: 600;
+
+            transition: 0.2s;
+        }
+
+
+        .back-btn:hover {
+            background: #f3ece7;
+            color: #81523e;
+        }
+
+
+        /* MAIN */
+
+        .container {
+            max-width: 1200px;
+
+            margin: auto;
+
+            padding: 35px 25px 50px;
+        }
+
+
+        .heading {
+            margin-bottom: 25px;
+        }
+
+
+        .heading-label {
+            color: #9a654c;
+
+            font-size: 11px;
+
+            font-weight: 700;
+
+            letter-spacing: 1.5px;
+
+            margin-bottom: 8px;
+        }
+
+
+        .heading h1 {
+            font-size: 30px;
+
+            color: #30343b;
+
+            font-weight: 800;
+
+            margin-bottom: 8px;
+        }
+
+
+        .heading p {
+            color: #817c76;
+
+            font-size: 13px;
+        }
+
+
+        /* FOOD GRID */
+
+        .food-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 20px;
+        }
+
+
+        /* FOOD CARD */
+
+        .food-card {
+            background: #f9f7f2;
+
+            border: 1px solid #e7e3dc;
+
+            border-radius: 17px;
+
+            padding: 23px;
+
+            transition: 0.25s;
+        }
+
+
+        .food-card:hover {
+            transform: translateY(-4px);
+
+            box-shadow:
+                0 12px 28px
+                rgba(45,42,38,0.08);
+        }
+
+
+        .food-icon {
+            width: 48px;
+            height: 48px;
+
+            border-radius: 12px;
+
+            background: #eee5de;
+
+            color: #9a654c;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 18px;
+
+            margin-bottom: 17px;
+        }
+
+
+        .food-card h2 {
+            font-size: 18px;
+
+            color: #30343b;
+
+            margin-bottom: 16px;
+        }
+
+
+        .detail {
+            margin-bottom: 10px;
+
+            font-size: 12px;
+
+            line-height: 1.5;
+
+            color: #77736e;
+        }
+
+
+        .detail strong {
+            color: #4f4b47;
+        }
+
+
+        /* PRIORITY */
+
+        .priority {
+            display: inline-block;
+
+            padding: 4px 9px;
+
+            border-radius: 20px;
+
+            font-size: 10px;
+
+            font-weight: 700;
+
+            margin-left: 5px;
+        }
+
+
+        .priority-high {
+            background: #f5dfdc;
+            color: #a34e43;
+        }
+
+
+        .priority-medium {
+            background: #eee7d5;
+            color: #8b6a2f;
+        }
+
+
+        .priority-low {
+            background: #e4e8df;
+            color: #5f7357;
+        }
+
+
+        .priority-info {
+            display: block;
+
+            margin-top: 5px;
+
+            color: #99928b;
+
+            font-size: 10px;
+        }
+
+
+        /* REQUEST BUTTON */
+
+        .request-btn {
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            gap: 7px;
+
+            width: 100%;
+
+            margin-top: 18px;
+
+            padding: 10px;
+
+            background: #9a654c;
+
+            color: white;
+
+            text-decoration: none;
+
+            border-radius: 8px;
+
+            font-size: 11px;
+
+            font-weight: 700;
+
+            transition: 0.2s;
+        }
+
+
+        .request-btn:hover {
+            background: #81523e;
+
+            transform: translateY(-1px);
+        }
+
+
+        /* EMPTY */
+
+        .empty {
+            background: #f9f7f2;
+
+            border: 1px solid #e7e3dc;
+
+            padding: 60px 30px;
+
+            text-align: center;
+
+            border-radius: 18px;
+        }
+
+
+        .empty i {
+            font-size: 42px;
+
+            color: #9a654c;
+
+            margin-bottom: 15px;
+        }
+
+
+        .empty h2 {
+            font-size: 20px;
+
+            margin-bottom: 8px;
+        }
+
+
+        .empty p {
+            color: #817c76;
+
+            font-size: 12px;
+        }
+
+
+        /* RESPONSIVE */
+
+        @media (max-width: 950px) {
+
+            .food-grid {
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+        }
+
+
+        @media (max-width: 650px) {
+
+            .navbar {
+                padding: 0 20px;
+            }
+
+            .food-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .container {
+                padding: 25px 15px 40px;
+            }
+
+            .heading h1 {
+                font-size: 25px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- NAVBAR -->
+
+<nav class="navbar">
+
+
+    <div class="logo">
+
+        <div class="logo-icon">
+
+            <i class="fa-solid fa-bowl-food"></i>
+
+        </div>
+
+        Food<span>Share</span>
+
+    </div>
+
+
+    <a href="{% url 'dashboard' %}"
+       class="back-btn">
+
+        <i class="fa-solid fa-arrow-left"></i>
+
+        Dashboard
+
+    </a>
+
+
+</nav>
+
+
+
+<!-- MAIN -->
+
+<main class="container">
+
+
+    <div class="heading">
+
+        <div class="heading-label">
+
+            FOOD DONATIONS
+
+        </div>
+
+
+        <h1>
+
+            <i class="fa-solid fa-box-open"></i>
+
+            Available Food
+
+        </h1>
+
+
+        <p>
+
+            Browse available food donations and request
+            food for your organization.
+
+        </p>
+
+    </div>
+
+
+
+    {% if donations %}
+
+
+        <div class="food-grid">
+
+
+            {% for donation in donations %}
+
+
+                <div class="food-card">
+
+
+                    <div class="food-icon">
+
+                        <i class="fa-solid fa-utensils"></i>
+
+                    </div>
+
+
+                    <h2>
+
+                        {{ donation.food_name }}
+
+                    </h2>
+
+
+                    <div class="detail">
+
+                        <strong>Type:</strong>
+
+                        {{ donation.get_food_type_display }}
+
+                    </div>
+
+
+                    <div class="detail">
+
+                        <strong>Quantity:</strong>
+
+                        {{ donation.quantity }} kg
+
+                    </div>
+
+
+                    <div class="detail">
+
+                        <strong>Prepared:</strong>
+
+                        {{ donation.preparation_date }}
+
+                    </div>
+
+
+                    <div class="detail">
+
+                        <strong>Best Before:</strong>
+
+                        {{ donation.expiry_date }}
+
+                    </div>
+
+
+                    <!-- AI PRIORITY -->
+
+                    <div class="detail">
+
+                        <strong>AI Priority:</strong>
+
+
+                        <span class="priority
+                            priority-{{ donation.priority|lower }}">
+
+                            {{ donation.get_priority_display }}
+
+                        </span>
+
+
+                        {% if donation.priority == "HIGH" %}
+
+                            <small class="priority-info">
+
+                                Food needs immediate attention.
+
+                            </small>
+
+
+                        {% elif donation.priority == "MEDIUM" %}
+
+                            <small class="priority-info">
+
+                                Food should be handled soon.
+
+                            </small>
+
+
+                        {% else %}
+
+                            <small class="priority-info">
+
+                                Food has more time available.
+
+                            </small>
+
+                        {% endif %}
+
+                    </div>
+
+
+                    <div class="detail">
+
+                        <strong>Pickup Address:</strong>
+
+                        {{ donation.pickup_address }}
+
+                    </div>
+
+
+                    {% if donation.description %}
+
+                        <div class="detail">
+
+                            <strong>Description:</strong>
+
+                            {{ donation.description }}
+
+                        </div>
+
+                    {% endif %}
+
+
+                    <a href="{% url 'request_food' donation.id %}"
+                       class="request-btn">
+
+                        <i class="fa-solid fa-hand-holding-heart"></i>
+
+                        Request Food
+
+                    </a>
+                       <a href="https://www.google.com/maps/search/?api=1&query={{ donation.pickup_address|urlencode }}"
+                          target="_blank"
+                           class="request-btn">
+                              <i class="fa-solid fa-location-dot"></i>
+                                 Pickup Location
+                        </a>
+                </div>
+
+
+            {% endfor %}
+
+
+        </div>
+
+
+    {% else %}
+
+
+        <div class="empty">
+
+            <i class="fa-solid fa-box-open"></i>
+
+
+            <h2>
+
+                No Food Available
+
+            </h2>
+
+
+            <p>
+
+                There are currently no available food donations.
+
+            </p>
+
+        </div>
+
+
+    {% endif %}
+
+
+</main>
+
+
+</body>
+
+</html>

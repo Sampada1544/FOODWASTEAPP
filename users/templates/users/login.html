@@ -1,0 +1,750 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>FoodShare - Login</title>
+
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+          rel="stylesheet">
+
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        body {
+
+            min-height: 100vh;
+
+            font-family: 'Inter', sans-serif;
+
+            background: #f5f6f8;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            padding: 30px;
+
+            color: #30343b;
+        }
+
+
+        /* =================================
+           MAIN CONTAINER
+        ================================= */
+
+        .login-container {
+
+            width: 100%;
+
+            max-width: 1050px;
+
+            min-height: 620px;
+
+            display: flex;
+
+            overflow: hidden;
+
+            border-radius: 24px;
+
+            background: #f9f7f2;
+
+            box-shadow:
+                0 18px 50px rgba(45, 42, 38, 0.12);
+
+            border: 1px solid #e7e3dc;
+        }
+
+
+        /* =================================
+           IMAGE SIDE
+        ================================= */
+
+        .image-section {
+
+            width: 52%;
+
+            min-height: 620px;
+
+            position: relative;
+
+            background-image:
+                linear-gradient(
+                    rgba(55, 43, 35, 0.18),
+                    rgba(55, 43, 35, 0.35)
+                ),
+                url("{% static 'images/food-login.jpg' %}");
+
+            background-size: cover;
+
+            background-position: center;
+        }
+
+
+        /* Soft image effect */
+
+        .image-section::after {
+
+            content: "";
+
+            position: absolute;
+
+            inset: 0;
+
+            background:
+                linear-gradient(
+                    180deg,
+                    rgba(35, 29, 25, 0.05),
+                    rgba(35, 29, 25, 0.45)
+                );
+        }
+
+
+        /* =================================
+           IMAGE TEXT
+        ================================= */
+
+        .image-content {
+
+            position: absolute;
+
+            z-index: 2;
+
+            left: 45px;
+
+            right: 45px;
+
+            bottom: 45px;
+
+            color: white;
+        }
+
+
+        .brand {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 10px;
+
+            font-size: 23px;
+
+            font-weight: 800;
+
+            margin-bottom: 20px;
+        }
+
+
+        .brand-icon {
+
+            width: 42px;
+
+            height: 42px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            border-radius: 11px;
+
+            background: rgba(255,255,255,0.20);
+
+            backdrop-filter: blur(8px);
+
+            border: 1px solid rgba(255,255,255,0.25);
+        }
+
+
+        .image-content h1 {
+
+            font-size: 35px;
+
+            line-height: 1.2;
+
+            margin-bottom: 13px;
+
+            letter-spacing: -0.8px;
+        }
+
+
+        .image-content p {
+
+            max-width: 470px;
+
+            font-size: 14px;
+
+            line-height: 1.7;
+
+            color: rgba(255,255,255,0.90);
+        }
+
+
+        /* =================================
+           RIGHT LOGIN SECTION
+        ================================= */
+
+        .login-section {
+
+            width: 48%;
+
+            background: #f9f7f2;
+
+            padding: 65px 60px;
+
+            display: flex;
+
+            flex-direction: column;
+
+            justify-content: center;
+        }
+
+
+        .small-title {
+
+            color: #9a654c;
+
+            font-size: 11px;
+
+            font-weight: 700;
+
+            letter-spacing: 1.5px;
+
+            text-transform: uppercase;
+
+            margin-bottom: 12px;
+        }
+
+
+        .login-section h2 {
+
+            font-size: 30px;
+
+            font-weight: 800;
+
+            color: #30343b;
+
+            margin-bottom: 8px;
+        }
+
+
+        .subtitle {
+
+            color: #77736e;
+
+            font-size: 13px;
+
+            line-height: 1.6;
+
+            margin-bottom: 30px;
+        }
+
+
+        /* =================================
+           ERROR
+        ================================= */
+
+        .error {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 9px;
+
+            background: #fcebea;
+
+            border: 1px solid #f1c8c4;
+
+            color: #a94442;
+
+            padding: 11px 13px;
+
+            border-radius: 9px;
+
+            font-size: 12px;
+
+            margin-bottom: 18px;
+        }
+
+
+        /* =================================
+           INPUT
+        ================================= */
+
+        .input-group {
+
+            margin-bottom: 18px;
+        }
+
+
+        .input-group label {
+
+            display: block;
+
+            color: #4c4a47;
+
+            font-size: 12px;
+
+            font-weight: 600;
+
+            margin-bottom: 7px;
+        }
+
+
+        .input-box {
+
+            position: relative;
+        }
+
+
+        .input-box i {
+
+            position: absolute;
+
+            left: 15px;
+
+            top: 50%;
+
+            transform: translateY(-50%);
+
+            color: #9b9690;
+
+            font-size: 14px;
+        }
+
+
+        .input-box input {
+
+            width: 100%;
+
+            height: 50px;
+
+            border: 1px solid #ddd8cf;
+
+            border-radius: 10px;
+
+            background: #fffdf9;
+
+            padding: 0 15px 0 43px;
+
+            outline: none;
+
+            font-family: 'Inter', sans-serif;
+
+            font-size: 13px;
+
+            color: #30343b;
+
+            transition: 0.2s;
+        }
+
+
+        .input-box input::placeholder {
+
+            color: #aaa59e;
+        }
+
+
+        .input-box input:focus {
+
+            border-color: #b5795d;
+
+            background: #ffffff;
+
+            box-shadow:
+                0 0 0 3px rgba(181,121,93,0.10);
+        }
+
+
+        .input-box:focus-within i {
+
+            color: #9a654c;
+        }
+
+
+        /* =================================
+           LOGIN BUTTON
+        ================================= */
+
+        .login-button {
+
+            width: 100%;
+
+            height: 50px;
+
+            border: none;
+
+            border-radius: 10px;
+
+            background: #9a654c;
+
+            color: white;
+
+            font-family: 'Inter', sans-serif;
+
+            font-size: 14px;
+
+            font-weight: 700;
+
+            cursor: pointer;
+
+            margin-top: 8px;
+
+            transition: 0.25s;
+        }
+
+
+        .login-button i {
+
+            margin-right: 7px;
+        }
+
+
+        .login-button:hover {
+
+            background: #81523e;
+
+            transform: translateY(-1px);
+
+            box-shadow:
+                0 8px 18px rgba(129,82,62,0.18);
+        }
+
+
+        /* =================================
+           REGISTER
+        ================================= */
+
+        .register {
+
+            text-align: center;
+
+            margin-top: 25px;
+
+            padding-top: 22px;
+
+            border-top: 1px solid #e6e1d9;
+
+            color: #77736e;
+
+            font-size: 12px;
+        }
+
+
+        .register a {
+
+            color: #9a654c;
+
+            font-weight: 700;
+
+            text-decoration: none;
+
+            margin-left: 4px;
+        }
+
+
+        .register a:hover {
+
+            color: #81523e;
+
+            text-decoration: underline;
+        }
+
+
+        /* =================================
+           RESPONSIVE
+        ================================= */
+
+        @media (max-width: 800px) {
+
+            body {
+
+                padding: 15px;
+            }
+
+
+            .login-container {
+
+                max-width: 520px;
+
+                flex-direction: column;
+            }
+
+
+            .image-section {
+
+                width: 100%;
+
+                min-height: 330px;
+            }
+
+
+            .login-section {
+
+                width: 100%;
+
+                padding: 45px 35px;
+            }
+
+
+            .image-content {
+
+                left: 30px;
+
+                right: 30px;
+
+                bottom: 30px;
+            }
+
+
+            .image-content h1 {
+
+                font-size: 28px;
+            }
+        }
+
+
+        @media (max-width: 450px) {
+
+            .image-section {
+
+                min-height: 280px;
+            }
+
+
+            .login-section {
+
+                padding: 35px 25px;
+            }
+
+
+            .image-content h1 {
+
+                font-size: 25px;
+            }
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<div class="login-container">
+
+
+    <!-- =================================
+         IMAGE SECTION
+    ================================= -->
+
+    <div class="image-section">
+
+
+        <div class="image-content">
+
+
+            <div class="brand">
+
+                <div class="brand-icon">
+
+                    <i class="fa-solid fa-bowl-food"></i>
+
+                </div>
+
+                FoodShare
+
+            </div>
+
+
+            <h1>
+
+                Good food deserves
+                a second chance.
+
+            </h1>
+
+
+            <p>
+
+                Connect surplus food with people and
+                organizations who need it. Together,
+                we can reduce food waste and create
+                a meaningful community impact.
+
+            </p>
+
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- =================================
+         LOGIN SECTION
+    ================================= -->
+
+    <div class="login-section">
+
+
+        <div class="small-title">
+
+            WELCOME TO FOODSHARE
+
+        </div>
+
+
+        <h2>
+
+            Sign in
+
+        </h2>
+
+
+        <p class="subtitle">
+
+            Enter your account details to continue.
+
+        </p>
+
+
+        {% if error %}
+
+            <div class="error">
+
+                <i class="fa-solid fa-circle-exclamation"></i>
+
+                {{ error }}
+
+            </div>
+
+        {% endif %}
+
+
+
+        <form method="POST">
+
+            {% csrf_token %}
+
+
+            <div class="input-group">
+
+                <label>
+
+                    Username
+
+                </label>
+
+
+                <div class="input-box">
+
+                    <i class="fa-solid fa-user"></i>
+
+                    <input
+                        type="text"
+                        name="username"
+                        placeholder="Enter your username"
+                        autocomplete="username"
+                        required>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="input-group">
+
+                <label>
+
+                    Password
+
+                </label>
+
+
+                <div class="input-box">
+
+                    <i class="fa-solid fa-lock"></i>
+
+                    <input
+                        type="password"
+                        name="password"
+                        placeholder="Enter your password"
+                        autocomplete="current-password"
+                        required>
+
+                </div>
+
+            </div>
+
+
+
+            <button
+                type="submit"
+                class="login-button">
+
+                <i class="fa-solid fa-arrow-right-to-bracket"></i>
+
+                Sign In
+
+            </button>
+
+
+        </form>
+
+
+
+        <div class="register">
+
+            Don't have an account?
+
+            <a href="{% url 'register' %}">
+                Create Account
+            </a>
+
+        </div>
+
+
+    </div>
+
+
+</div>
+
+
+</body>
+
+</html>

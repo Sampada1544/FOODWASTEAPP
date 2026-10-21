@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>FoodShare - Donate Food</title>
+
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+          rel="stylesheet">
+
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        body {
+            font-family: 'Inter', sans-serif;
+
+            background: #f5f6f8;
+
+            color: #30343b;
+
+            min-height: 100vh;
+        }
+
+
+        /* NAVBAR */
+
+        .navbar {
+
+            height: 72px;
+
+            background: #f9f7f2;
+
+            border-bottom: 1px solid #e7e3dc;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            padding: 0 6%;
+
+            position: sticky;
+
+            top: 0;
+
+            z-index: 100;
+        }
+
+
+        .logo {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 10px;
+
+            font-size: 22px;
+
+            font-weight: 800;
+
+            color: #30343b;
+        }
+
+
+        .logo-icon {
+
+            width: 40px;
+
+            height: 40px;
+
+            border-radius: 11px;
+
+            background: #9a654c;
+
+            color: white;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+        }
+
+
+        .logo span {
+
+            color: #9a654c;
+        }
+
+
+        .back-btn {
+
+            text-decoration: none;
+
+            color: #77736e;
+
+            border: 1px solid #ddd8cf;
+
+            padding: 9px 14px;
+
+            border-radius: 8px;
+
+            font-size: 12px;
+
+            font-weight: 600;
+
+            transition: 0.2s;
+        }
+
+
+        .back-btn:hover {
+
+            background: #f3ece7;
+
+            color: #81523e;
+        }
+
+
+        /* MAIN */
+
+        .container {
+
+            max-width: 780px;
+
+            margin: auto;
+
+            padding: 35px 25px 50px;
+        }
+
+
+        /* FORM CARD */
+
+        .form-card {
+
+            background: #f9f7f2;
+
+            border: 1px solid #e7e3dc;
+
+            border-radius: 20px;
+
+            padding: 35px;
+
+            box-shadow:
+                0 12px 35px
+                rgba(45,42,38,0.07);
+        }
+
+
+        /* HEADING */
+
+        .heading {
+
+            margin-bottom: 30px;
+
+            padding-bottom: 22px;
+
+            border-bottom: 1px solid #e7e3dc;
+        }
+
+
+        .heading-label {
+
+            color: #9a654c;
+
+            font-size: 11px;
+
+            font-weight: 700;
+
+            letter-spacing: 1.5px;
+
+            margin-bottom: 8px;
+        }
+
+
+        .heading h1 {
+
+            color: #30343b;
+
+            font-size: 28px;
+
+            font-weight: 800;
+
+            margin-bottom: 8px;
+        }
+
+
+        .heading p {
+
+            color: #817c76;
+
+            font-size: 12px;
+
+            line-height: 1.6;
+        }
+
+
+        /* FORM GROUP */
+
+        .form-group {
+
+            margin-bottom: 20px;
+        }
+
+
+        .form-group label {
+
+            display: block;
+
+            margin-bottom: 7px;
+
+            color: #4f4b47;
+
+            font-size: 12px;
+
+            font-weight: 700;
+        }
+
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+
+            width: 100%;
+
+            padding: 12px 14px;
+
+            border: 1px solid #ddd8cf;
+
+            border-radius: 9px;
+
+            outline: none;
+
+            background: #ffffff;
+
+            color: #30343b;
+
+            font-family: 'Inter', sans-serif;
+
+            font-size: 13px;
+
+            transition: 0.2s;
+        }
+
+
+        .form-group textarea {
+
+            resize: vertical;
+
+            min-height: 90px;
+        }
+
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+
+            border-color: #9a654c;
+
+            box-shadow:
+                0 0 0 3px
+                rgba(154,101,76,0.08);
+        }
+
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+
+            color: #aaa49d;
+        }
+
+
+        /* HELP TEXT */
+
+        .help-text {
+
+            display: block;
+
+            margin-top: 5px;
+
+            font-size: 10px;
+
+            color: #99928b;
+
+            line-height: 1.5;
+        }
+
+
+        /* ERRORS */
+
+        .error {
+
+            color: #a34e43;
+
+            font-size: 11px;
+
+            margin-top: 5px;
+        }
+
+
+        /* BUTTON */
+
+        .submit-btn {
+
+            width: 100%;
+
+            padding: 12px;
+
+            border: none;
+
+            background: #9a654c;
+
+            color: white;
+
+            border-radius: 9px;
+
+            font-family: 'Inter', sans-serif;
+
+            font-size: 12px;
+
+            font-weight: 700;
+
+            cursor: pointer;
+
+            margin-top: 8px;
+
+            transition: 0.2s;
+        }
+
+
+        .submit-btn:hover {
+
+            background: #81523e;
+
+            transform: translateY(-1px);
+        }
+
+
+        /* RESPONSIVE */
+
+        @media (max-width: 600px) {
+
+            .navbar {
+
+                padding: 0 20px;
+            }
+
+
+            .container {
+
+                padding: 25px 15px 40px;
+            }
+
+
+            .form-card {
+
+                padding: 25px 20px;
+            }
+
+
+            .heading h1 {
+
+                font-size: 24px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- NAVBAR -->
+
+<nav class="navbar">
+
+
+    <div class="logo">
+
+        <div class="logo-icon">
+
+            <i class="fa-solid fa-bowl-food"></i>
+
+        </div>
+
+        Food<span>Share</span>
+
+    </div>
+
+
+    <a href="{% url 'dashboard' %}"
+       class="back-btn">
+
+        <i class="fa-solid fa-arrow-left"></i>
+
+        Dashboard
+
+    </a>
+
+
+</nav>
+
+
+
+<!-- MAIN -->
+
+<main class="container">
+
+
+    <div class="form-card">
+
+
+        <div class="heading">
+
+            <div class="heading-label">
+
+                FOOD DONATION
+
+            </div>
+
+
+            <h1>
+
+                <i class="fa-solid fa-hand-holding-heart"></i>
+
+                Donate Food
+
+            </h1>
+
+
+            <p>
+
+                Provide food details so it can reach
+                people and organizations who need it.
+
+            </p>
+
+        </div>
+
+
+
+        <form method="POST">
+
+            {% csrf_token %}
+
+
+            {% for field in form %}
+
+
+                <div class="form-group">
+
+
+                    <label for="{{ field.id_for_label }}">
+
+                        {{ field.label }}
+
+                    </label>
+
+
+                    {{ field }}
+
+
+                    {% if field.help_text %}
+
+                        <span class="help-text">
+
+                            {{ field.help_text }}
+
+                        </span>
+
+                    {% endif %}
+
+
+                    {% for error in field.errors %}
+
+                        <div class="error">
+
+                            {{ error }}
+
+                        </div>
+
+                    {% endfor %}
+
+
+                </div>
+
+
+            {% endfor %}
+
+
+
+            <button type="submit"
+                    class="submit-btn">
+
+                <i class="fa-solid fa-paper-plane"></i>
+
+                Donate Food
+
+            </button>
+
+
+        </form>
+
+
+    </div>
+
+
+</main>
+
+
+</body>
+
+</html>

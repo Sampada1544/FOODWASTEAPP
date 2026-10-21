@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>FoodShare - My Requests</title>
+
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+          rel="stylesheet">
+
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        body {
+            font-family: 'Inter', sans-serif;
+
+            background: #f5f6f8;
+
+            color: #30343b;
+
+            min-height: 100vh;
+        }
+
+
+        /* NAVBAR */
+
+        .navbar {
+
+            height: 72px;
+
+            background: #f9f7f2;
+
+            border-bottom: 1px solid #e7e3dc;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            padding: 0 6%;
+
+            position: sticky;
+
+            top: 0;
+
+            z-index: 100;
+        }
+
+
+        .logo {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 10px;
+
+            font-size: 22px;
+
+            font-weight: 800;
+
+            color: #30343b;
+        }
+
+
+        .logo-icon {
+
+            width: 40px;
+
+            height: 40px;
+
+            border-radius: 11px;
+
+            background: #9a654c;
+
+            color: white;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+        }
+
+
+        .logo span {
+
+            color: #9a654c;
+        }
+
+
+        .back-btn {
+
+            text-decoration: none;
+
+            color: #77736e;
+
+            border: 1px solid #ddd8cf;
+
+            padding: 9px 14px;
+
+            border-radius: 8px;
+
+            font-size: 12px;
+
+            font-weight: 600;
+
+            transition: 0.2s;
+        }
+
+
+        .back-btn:hover {
+
+            background: #f3ece7;
+
+            color: #81523e;
+        }
+
+
+        /* MAIN */
+
+        .container {
+
+            max-width: 1000px;
+
+            margin: auto;
+
+            padding: 35px 25px 50px;
+        }
+
+
+        /* HEADING */
+
+        .heading {
+
+            margin-bottom: 25px;
+        }
+
+
+        .heading-label {
+
+            color: #9a654c;
+
+            font-size: 11px;
+
+            font-weight: 700;
+
+            letter-spacing: 1.5px;
+
+            margin-bottom: 8px;
+        }
+
+
+        .heading h1 {
+
+            color: #30343b;
+
+            font-size: 30px;
+
+            font-weight: 800;
+
+            margin-bottom: 8px;
+        }
+
+
+        .heading p {
+
+            color: #817c76;
+
+            font-size: 13px;
+
+            line-height: 1.6;
+        }
+
+
+        /* REQUEST CARD */
+
+        .request-card {
+
+            background: #f9f7f2;
+
+            border: 1px solid #e7e3dc;
+
+            padding: 25px;
+
+            margin-bottom: 20px;
+
+            border-radius: 17px;
+
+            transition: 0.25s;
+        }
+
+
+        .request-card:hover {
+
+            transform: translateY(-3px);
+
+            box-shadow:
+                0 12px 28px
+                rgba(45,42,38,0.08);
+        }
+
+
+        /* REQUEST HEADER */
+
+        .request-header {
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 15px;
+
+            margin-bottom: 20px;
+        }
+
+
+        .food-title {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 12px;
+        }
+
+
+        .food-icon {
+
+            width: 43px;
+
+            height: 43px;
+
+            border-radius: 11px;
+
+            background: #eee5de;
+
+            color: #9a654c;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+        }
+
+
+        .request-card h2 {
+
+            color: #30343b;
+
+            font-size: 19px;
+
+            font-weight: 700;
+        }
+
+
+        /* STATUS */
+
+        .status {
+
+            display: inline-block;
+
+            padding: 6px 12px;
+
+            border-radius: 20px;
+
+            font-size: 10px;
+
+            font-weight: 700;
+
+            white-space: nowrap;
+        }
+
+
+        .status-requested {
+
+            background: #eee7d5;
+
+            color: #8b6a2f;
+        }
+
+
+        .status-approved {
+
+            background: #e5eadf;
+
+            color: #5f7357;
+        }
+
+
+        .status-rejected {
+
+            background: #eee1df;
+
+            color: #96574d;
+        }
+
+
+        .status-collected {
+
+            background: #e2e8e5;
+
+            color: #526d63;
+        }
+
+
+        /* DETAILS */
+
+        .details {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 12px;
+        }
+
+
+        .detail {
+
+            background: #ffffff;
+
+            border: 1px solid #eee9e2;
+
+            padding: 13px;
+
+            border-radius: 10px;
+        }
+
+
+        .detail strong {
+
+            display: block;
+
+            font-size: 10px;
+
+            color: #817c76;
+
+            margin-bottom: 5px;
+
+            font-weight: 700;
+        }
+
+
+        .detail span,
+        .detail-value {
+
+            font-size: 12px;
+
+            color: #4f4b47;
+
+            line-height: 1.5;
+
+            word-break: break-word;
+        }
+
+
+        /* AI PRIORITY */
+
+        .priority {
+
+            display: inline-block;
+
+            padding: 4px 9px;
+
+            border-radius: 20px;
+
+            font-size: 10px;
+
+            font-weight: 700;
+        }
+
+
+        .priority-high {
+
+            background: #f5dfdc;
+
+            color: #a34e43;
+        }
+
+
+        .priority-medium {
+
+            background: #eee7d5;
+
+            color: #8b6a2f;
+        }
+
+
+        .priority-low {
+
+            background: #e4e8df;
+
+            color: #5f7357;
+        }
+
+
+        /* EMPTY */
+
+        .empty {
+
+            background: #f9f7f2;
+
+            border: 1px solid #e7e3dc;
+
+            padding: 60px 30px;
+
+            text-align: center;
+
+            border-radius: 18px;
+
+            box-shadow:
+                0 10px 25px
+                rgba(45,42,38,0.05);
+        }
+
+
+        .empty i {
+
+            font-size: 42px;
+
+            color: #9a654c;
+
+            margin-bottom: 15px;
+        }
+
+
+        .empty h2 {
+
+            margin-bottom: 8px;
+
+            font-size: 20px;
+
+            color: #30343b;
+        }
+
+
+        .empty p {
+
+            color: #817c76;
+
+            font-size: 12px;
+        }
+
+
+        /* RESPONSIVE */
+
+        @media (max-width: 700px) {
+
+            .navbar {
+
+                padding: 0 20px;
+            }
+
+
+            .container {
+
+                padding: 25px 15px 40px;
+            }
+
+
+            .details {
+
+                grid-template-columns: 1fr;
+            }
+
+
+            .request-header {
+
+                align-items: flex-start;
+
+                flex-direction: column;
+            }
+
+
+            .status {
+
+                align-self: flex-start;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- NAVBAR -->
+
+<nav class="navbar">
+
+
+    <div class="logo">
+
+        <div class="logo-icon">
+
+            <i class="fa-solid fa-bowl-food"></i>
+
+        </div>
+
+        Food<span>Share</span>
+
+    </div>
+
+
+    <a href="{% url 'dashboard' %}"
+       class="back-btn">
+
+        <i class="fa-solid fa-arrow-left"></i>
+
+        Dashboard
+
+    </a>
+
+
+</nav>
+
+
+
+<!-- MAIN -->
+
+<main class="container">
+
+
+    <div class="heading">
+
+        <div class="heading-label">
+
+            NGO ACTIVITY
+
+        </div>
+
+
+        <h1>
+
+            <i class="fa-solid fa-list-check"></i>
+
+            My Requests
+
+        </h1>
+
+
+        <p>
+
+            Track the status of your food donation requests.
+
+        </p>
+
+    </div>
+
+
+
+    {% if requests %}
+
+
+        {% for request in requests %}
+
+
+            <div class="request-card">
+
+
+                <div class="request-header">
+
+
+                    <div class="food-title">
+
+
+                        <div class="food-icon">
+
+                            <i class="fa-solid fa-utensils"></i>
+
+                        </div>
+
+
+                        <h2>
+
+                            {{ request.donation.food_name }}
+
+                        </h2>
+
+
+                    </div>
+
+
+                    <span class="status
+                        status-{{ request.status|lower }}">
+
+                        {{ request.get_status_display }}
+
+                    </span>
+
+
+                </div>
+
+
+
+                <div class="details">
+
+
+                    <div class="detail">
+
+                        <strong>
+                            Food Type
+                        </strong>
+
+                        <span>
+                            {{ request.donation.get_food_type_display }}
+                        </span>
+
+                    </div>
+
+
+
+                    <div class="detail">
+
+                        <strong>
+                            Quantity
+                        </strong>
+
+                        <span>
+                            {{ request.donation.quantity }} kg
+                        </span>
+
+                    </div>
+
+
+
+                    <div class="detail">
+
+                        <strong>
+                            Pickup Address
+                        </strong>
+
+                        <span>
+                            {{ request.donation.pickup_address }}
+                        </span>
+
+                    </div>
+
+
+
+                    <div class="detail">
+
+                        <strong>
+                            AI Priority
+                        </strong>
+
+                        <span>
+
+                            <span class="priority
+                                priority-{{ request.donation.priority|lower }}">
+
+                                {{ request.donation.get_priority_display }}
+
+                            </span>
+
+                        </span>
+
+                    </div>
+
+
+
+                    <div class="detail">
+
+                        <strong>
+                            Requested On
+                        </strong>
+
+                        <span>
+                            {{ request.requested_at|date:"d M Y, h:i A" }}
+                        </span>
+
+                    </div>
+
+
+
+                    <div class="detail">
+
+                        <strong>
+                            Request Status
+                        </strong>
+
+                        <span>
+
+                            <span class="status
+                                status-{{ request.status|lower }}">
+
+                                {{ request.get_status_display }}
+
+                            </span>
+
+                        </span>
+
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+
+        {% endfor %}
+
+
+    {% else %}
+
+
+        <div class="empty">
+
+
+            <i class="fa-solid fa-inbox"></i>
+
+
+            <h2>
+
+                No Requests Yet
+
+            </h2>
+
+
+            <p>
+
+                You have not requested any food
+                donations yet.
+
+            </p>
+
+
+        </div>
+
+
+    {% endif %}
+
+
+</main>
+
+
+</body>
+
+</html>

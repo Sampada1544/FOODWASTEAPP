@@ -1,0 +1,1396 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>FoodShare - Dashboard</title>
+
+
+    <!-- Google Font -->
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+          rel="stylesheet">
+
+
+    <!-- Font Awesome -->
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        body {
+
+            font-family: 'Inter', sans-serif;
+
+            background: #f5f6f8;
+
+            color: #30343b;
+
+            min-height: 100vh;
+        }
+
+
+        /* =================================
+           NAVBAR
+        ================================= */
+
+        .navbar {
+
+            height: 72px;
+
+            background: #f9f7f2;
+
+            border-bottom: 1px solid #e7e3dc;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            padding: 0 6%;
+
+            position: sticky;
+
+            top: 0;
+
+            z-index: 100;
+        }
+
+
+        .logo {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 10px;
+
+            font-size: 22px;
+
+            font-weight: 800;
+
+            color: #30343b;
+        }
+
+
+        .logo-icon {
+
+            width: 40px;
+
+            height: 40px;
+
+            border-radius: 11px;
+
+            background: #9a654c;
+
+            color: white;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            font-size: 16px;
+        }
+
+
+        .logo span {
+
+            color: #9a654c;
+        }
+
+
+        .nav-right {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 16px;
+        }
+
+
+        .user-info {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 9px;
+
+            color: #5f5b57;
+
+            font-size: 13px;
+        }
+
+
+        .user-icon {
+
+            width: 36px;
+
+            height: 36px;
+
+            border-radius: 50%;
+
+            background: #eee5de;
+
+            color: #9a654c;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+        }
+
+
+        .logout-btn {
+
+            text-decoration: none;
+
+            color: #77736e;
+
+            font-size: 12px;
+
+            font-weight: 600;
+
+            border: 1px solid #ddd8cf;
+
+            padding: 9px 13px;
+
+            border-radius: 8px;
+
+            transition: 0.2s;
+        }
+
+
+        .logout-btn:hover {
+
+            background: #f3ece7;
+
+            color: #81523e;
+        }
+
+
+        /* =================================
+           MAIN
+        ================================= */
+
+        .main {
+
+            max-width: 1200px;
+
+            margin: auto;
+
+            padding: 35px 25px 50px;
+        }
+
+
+        /* =================================
+           HERO
+        ================================= */
+
+        .hero {
+
+            min-height: 280px;
+
+            border-radius: 22px;
+
+            overflow: hidden;
+
+            position: relative;
+
+            display: flex;
+
+            align-items: center;
+
+            padding: 45px;
+
+            background:
+
+                radial-gradient(
+                    circle at 85% 20%,
+                    rgba(255,255,255,0.65),
+                    transparent 25%
+                ),
+
+                linear-gradient(
+                    135deg,
+                    #eadbd0,
+                    #f4e9df 50%,
+                    #eee5de
+                );
+
+            border: 1px solid #e2d7cf;
+
+            box-shadow:
+                0 12px 35px rgba(45,42,38,0.08);
+        }
+
+
+        /* Decorative circles */
+
+        .hero::before {
+
+            content: "";
+
+            position: absolute;
+
+            width: 230px;
+
+            height: 230px;
+
+            border-radius: 50%;
+
+            right: 70px;
+
+            top: -90px;
+
+            background: rgba(154,101,76,0.10);
+        }
+
+
+        .hero::after {
+
+            content: "";
+
+            position: absolute;
+
+            width: 150px;
+
+            height: 150px;
+
+            border-radius: 50%;
+
+            right: 180px;
+
+            bottom: -80px;
+
+            background: rgba(154,101,76,0.08);
+        }
+
+
+        .hero-content {
+
+            position: relative;
+
+            z-index: 2;
+
+            max-width: 700px;
+        }
+
+
+        .welcome-label {
+
+            color: #9a654c;
+
+            font-size: 11px;
+
+            font-weight: 700;
+
+            letter-spacing: 1.5px;
+
+            margin-bottom: 12px;
+        }
+
+
+        .hero h1 {
+
+            font-size: 32px;
+
+            line-height: 1.2;
+
+            color: #30343b;
+
+            margin-bottom: 12px;
+
+            font-weight: 800;
+        }
+
+
+        .hero p {
+
+            font-size: 13px;
+
+            line-height: 1.7;
+
+            color: #6f6964;
+
+            max-width: 600px;
+        }
+
+
+        .role-badge {
+
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 7px;
+
+            margin-top: 20px;
+
+            padding: 8px 13px;
+
+            border-radius: 20px;
+
+            background: #9a654c;
+
+            color: white;
+
+            font-size: 11px;
+
+            font-weight: 600;
+        }
+
+
+        /* =================================
+           SECTION TITLE
+        ================================= */
+
+        .section-title {
+
+            margin-top: 35px;
+
+            margin-bottom: 17px;
+        }
+
+
+        .section-title h2 {
+
+            font-size: 20px;
+
+            color: #30343b;
+
+            font-weight: 750;
+        }
+
+
+        .section-title p {
+
+            font-size: 12px;
+
+            color: #88837d;
+
+            margin-top: 5px;
+        }
+
+
+        /* =================================
+           STATISTICS
+        ================================= */
+
+        .stats-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 18px;
+        }
+
+
+        .stat-card {
+
+            background: #f9f7f2;
+
+            border: 1px solid #e7e3dc;
+
+            border-radius: 16px;
+
+            padding: 22px;
+
+            transition: 0.25s;
+        }
+
+
+        .stat-card:hover {
+
+            transform: translateY(-3px);
+
+            box-shadow:
+                0 10px 25px rgba(45,42,38,0.08);
+        }
+
+
+        .stat-top {
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            margin-bottom: 17px;
+        }
+
+
+        .stat-icon {
+
+            width: 43px;
+
+            height: 43px;
+
+            border-radius: 11px;
+
+            background: #eee5de;
+
+            color: #9a654c;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            font-size: 16px;
+        }
+
+
+        .stat-label {
+
+            color: #817c76;
+
+            font-size: 10px;
+
+            font-weight: 700;
+
+            letter-spacing: 0.5px;
+        }
+
+
+        .stat-value {
+
+            font-size: 28px;
+
+            font-weight: 800;
+
+            color: #30343b;
+        }
+
+
+        /* =================================
+           QUICK ACTIONS
+        ================================= */
+
+        .actions-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 18px;
+        }
+
+
+        .action-card {
+
+            background: #f9f7f2;
+
+            border: 1px solid #e7e3dc;
+
+            border-radius: 17px;
+
+            padding: 25px;
+
+            transition: 0.25s;
+        }
+
+
+        .action-card:hover {
+
+            transform: translateY(-3px);
+
+            box-shadow:
+                0 10px 25px rgba(45,42,38,0.08);
+        }
+
+
+        .action-icon {
+
+            width: 48px;
+
+            height: 48px;
+
+            background: #eee5de;
+
+            color: #9a654c;
+
+            border-radius: 12px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            font-size: 18px;
+
+            margin-bottom: 18px;
+        }
+
+
+        .action-card h3 {
+
+            font-size: 16px;
+
+            color: #30343b;
+
+            margin-bottom: 8px;
+        }
+
+
+        .action-card p {
+
+            font-size: 12px;
+
+            line-height: 1.6;
+
+            color: #817c76;
+
+            margin-bottom: 18px;
+        }
+
+
+        .action-btn {
+
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 7px;
+
+            text-decoration: none;
+
+            background: #9a654c;
+
+            color: white;
+
+            padding: 9px 13px;
+
+            border-radius: 8px;
+
+            font-size: 11px;
+
+            font-weight: 700;
+
+            transition: 0.2s;
+        }
+
+
+        .action-btn:hover {
+
+            background: #81523e;
+
+            transform: translateY(-1px);
+        }
+
+
+        /* =================================
+           IMPACT
+        ================================= */
+
+        .impact {
+
+            margin-top: 35px;
+
+            background:
+
+                linear-gradient(
+                    135deg,
+                    #f9f7f2,
+                    #f3ebe5
+                );
+
+            border: 1px solid #e7e3dc;
+
+            border-radius: 18px;
+
+            padding: 28px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 30px;
+        }
+
+
+        .impact-content {
+
+            max-width: 650px;
+        }
+
+
+        .impact-content h2 {
+
+            font-size: 20px;
+
+            margin-bottom: 8px;
+
+            color: #30343b;
+        }
+
+
+        .impact-content p {
+
+            font-size: 12px;
+
+            line-height: 1.7;
+
+            color: #817c76;
+        }
+
+
+        .impact-number {
+
+            text-align: center;
+
+            min-width: 160px;
+
+            padding: 20px;
+
+            background: #eadbd0;
+
+            border-radius: 14px;
+        }
+
+
+        .impact-number strong {
+
+            display: block;
+
+            color: #9a654c;
+
+            font-size: 29px;
+
+            font-weight: 800;
+        }
+
+
+        .impact-number span {
+
+            font-size: 10px;
+
+            color: #77736e;
+
+            font-weight: 700;
+        }
+
+
+        /* =================================
+           FOOTER
+        ================================= */
+
+        footer {
+
+            text-align: center;
+
+            padding: 25px;
+
+            color: #99948e;
+
+            font-size: 11px;
+        }
+
+
+        /* =================================
+           RESPONSIVE
+        ================================= */
+
+        @media (max-width: 950px) {
+
+            .stats-grid {
+
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+
+            .actions-grid {
+
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+        }
+
+
+        @media (max-width: 700px) {
+
+            .navbar {
+
+                padding: 0 20px;
+            }
+
+
+            .user-info span {
+
+                display: none;
+            }
+
+
+            .hero {
+
+                padding: 30px;
+
+                min-height: 280px;
+            }
+
+
+            .hero h1 {
+
+                font-size: 27px;
+            }
+
+
+            .stats-grid,
+            .actions-grid {
+
+                grid-template-columns: 1fr;
+            }
+
+
+            .impact {
+
+                flex-direction: column;
+
+                align-items: flex-start;
+            }
+
+
+            .impact-number {
+
+                width: 100%;
+            }
+        }
+
+
+        @media (max-width: 450px) {
+
+            .main {
+
+                padding: 20px 15px 40px;
+            }
+
+
+            .hero {
+
+                padding: 25px;
+            }
+
+
+            .hero h1 {
+
+                font-size: 24px;
+            }
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =================================
+     NAVBAR
+================================= -->
+
+<nav class="navbar">
+
+
+    <div class="logo">
+
+        <div class="logo-icon">
+
+            <i class="fa-solid fa-bowl-food"></i>
+
+        </div>
+
+        Food<span>Share</span>
+
+    </div>
+
+
+    <div class="nav-right">
+
+
+        <div class="user-info">
+
+            <div class="user-icon">
+
+                <i class="fa-solid fa-user"></i>
+
+            </div>
+
+            <span>
+                {{ request.user.username }}
+            </span>
+
+        </div>
+
+
+        <a href="/logout/" class="logout-btn">
+
+            <i class="fa-solid fa-right-from-bracket"></i>
+
+            Logout
+
+        </a>
+
+
+    </div>
+
+
+</nav>
+
+
+
+<!-- =================================
+     MAIN
+================================= -->
+
+<main class="main">
+
+
+    <!-- HERO -->
+
+    <section class="hero">
+
+
+        <div class="hero-content">
+
+
+            <div class="welcome-label">
+
+                FOODSHARE DASHBOARD
+
+            </div>
+
+
+            <h1>
+
+                Welcome back,
+                {{ request.user.username }}!
+
+            </h1>
+
+
+            <p>
+
+                Manage food donations, connect with NGOs,
+                and help reduce food waste through the
+                FoodShare community.
+
+            </p>
+
+
+            <div class="role-badge">
+
+                <i class="fa-solid fa-user-check"></i>
+
+                {{ profile.get_role_display }}
+
+            </div>
+
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- =================================
+         PLATFORM OVERVIEW
+    ================================= -->
+
+    <div class="section-title">
+
+        <h2>
+
+            Platform Overview
+
+        </h2>
+
+        <p>
+
+            Current FoodShare activity and impact.
+
+        </p>
+
+    </div>
+
+
+    <div class="stats-grid">
+
+
+        <div class="stat-card">
+
+            <div class="stat-top">
+
+                <div class="stat-icon">
+
+                    <i class="fa-solid fa-box-open"></i>
+
+                </div>
+
+                <span class="stat-label">
+                    DONATIONS
+                </span>
+
+            </div>
+
+
+            <div class="stat-value">
+
+                {{ total_donations }}
+
+            </div>
+
+        </div>
+
+
+
+        <div class="stat-card">
+
+            <div class="stat-top">
+
+                <div class="stat-icon">
+
+                    <i class="fa-solid fa-utensils"></i>
+
+                </div>
+
+                <span class="stat-label">
+                    AVAILABLE
+                </span>
+
+            </div>
+
+
+            <div class="stat-value">
+
+                {{ available_food }}
+
+            </div>
+
+        </div>
+
+
+
+        <div class="stat-card">
+
+            <div class="stat-top">
+
+                <div class="stat-icon">
+
+                    <i class="fa-solid fa-hand-holding-heart"></i>
+
+                </div>
+
+                <span class="stat-label">
+                    REQUESTS
+                </span>
+
+            </div>
+
+
+            <div class="stat-value">
+
+                {{ total_requests }}
+
+            </div>
+
+        </div>
+
+
+
+        <div class="stat-card">
+
+            <div class="stat-top">
+
+                <div class="stat-icon">
+
+                    <i class="fa-solid fa-circle-check"></i>
+
+                </div>
+
+                <span class="stat-label">
+                    COLLECTED
+                </span>
+
+            </div>
+
+
+            <div class="stat-value">
+
+                {{ collected_food }}
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- =================================
+         QUICK ACTIONS
+    ================================= -->
+
+    <div class="section-title">
+
+        <h2>
+
+            Quick Actions
+
+        </h2>
+
+        <p>
+
+            Access the features available for your role.
+
+        </p>
+
+    </div>
+
+
+    <div class="actions-grid">
+
+
+        {% if profile.role == 'DONOR' %}
+
+
+        <!-- DONOR -->
+
+        <div class="action-card">
+
+            <div class="action-icon">
+
+                <i class="fa-solid fa-plus"></i>
+
+            </div>
+
+
+            <h3>
+
+                Donate Food
+
+            </h3>
+
+
+            <p>
+
+                Add surplus food and make it available
+                to organizations that need it.
+
+            </p>
+
+
+            <a href="{% url 'donate_food' %}"
+               class="action-btn">
+
+                Donate Now
+
+                <i class="fa-solid fa-arrow-right"></i>
+
+            </a>
+
+        </div>
+
+
+        <div class="action-card">
+
+            <div class="action-icon">
+
+                <i class="fa-solid fa-box"></i>
+
+            </div>
+
+
+            <h3>
+
+                My Donations
+
+            </h3>
+
+
+            <p>
+
+                View and monitor all the food donations
+                you have submitted.
+
+            </p>
+
+
+            <a href="{% url 'my_donations' %}"
+               class="action-btn">
+
+                View Donations
+
+                <i class="fa-solid fa-arrow-right"></i>
+
+            </a>
+
+        </div>
+
+
+        {% endif %}
+
+
+
+        {% if profile.role == 'NGO' %}
+
+
+        <!-- NGO -->
+
+        <div class="action-card">
+
+            <div class="action-icon">
+
+                <i class="fa-solid fa-magnifying-glass"></i>
+
+            </div>
+
+
+            <h3>
+
+                Available Food
+
+            </h3>
+
+
+            <p>
+
+                Browse available food donations and
+                request food for your organization.
+
+            </p>
+
+
+            <a href="{% url 'available_food' %}"
+               class="action-btn">
+
+                Find Food
+
+                <i class="fa-solid fa-arrow-right"></i>
+
+            </a>
+
+        </div>
+
+
+        <div class="action-card">
+
+            <div class="action-icon">
+
+                <i class="fa-solid fa-clipboard-list"></i>
+
+            </div>
+
+
+            <h3>
+
+                My Requests
+
+            </h3>
+
+
+            <p>
+
+                Track the food requests submitted
+                by your organization.
+
+            </p>
+
+
+            <a href="{% url 'my_requests' %}"
+               class="action-btn">
+
+                View Requests
+
+                <i class="fa-solid fa-arrow-right"></i>
+
+            </a>
+
+        </div>
+
+
+        {% endif %}
+
+
+
+        {% if profile.role == 'VOLUNTEER' %}
+
+
+        <!-- VOLUNTEER -->
+
+        <div class="action-card">
+
+            <div class="action-icon">
+
+                <i class="fa-solid fa-truck"></i>
+
+            </div>
+
+
+            <h3>
+
+                Pickup Tasks
+
+            </h3>
+
+
+            <p>
+
+                View approved food pickup tasks
+                assigned to volunteers.
+
+            </p>
+
+
+            <a href="{% url 'pickup_tasks' %}"
+               class="action-btn">
+
+                View Tasks
+
+                <i class="fa-solid fa-arrow-right"></i>
+
+            </a>
+
+        </div>
+
+
+        <div class="action-card">
+
+            <div class="action-icon">
+
+                <i class="fa-solid fa-clock-rotate-left"></i>
+
+            </div>
+
+
+            <h3>
+
+                Pickup History
+
+            </h3>
+
+
+            <p>
+
+                View previously completed food
+                collection activities.
+
+            </p>
+
+
+            <a href="{% url 'pickup_history' %}"
+               class="action-btn">
+
+                View History
+
+                <i class="fa-solid fa-arrow-right"></i>
+
+            </a>
+
+        </div>
+
+
+        {% endif %}
+
+
+    </div>
+
+
+
+    <!-- =================================
+         IMPACT
+    ================================= -->
+
+    <section class="impact">
+
+
+        <div class="impact-content">
+
+            <h2>
+
+                FoodShare Impact
+
+            </h2>
+
+
+            <p>
+
+                Every donation helps move surplus food
+                toward people and organizations that can
+                use it. Together, the FoodShare community
+                can reduce unnecessary food waste.
+
+            </p>
+
+        </div>
+
+
+        <div class="impact-number">
+
+            <strong>
+                {{ estimated_meals }}
+            </strong>
+
+            <span>
+                ESTIMATED MEALS
+            </span>
+
+        </div>
+
+
+    </section>
+
+
+</main>
+
+
+
+<footer>
+
+    <i class="fa-solid fa-leaf"></i>
+
+    FoodShare • Reducing Food Waste Through Community
+
+</footer>
+
+
+</body>
+
+</html>

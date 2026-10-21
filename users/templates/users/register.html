@@ -1,0 +1,786 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>FoodShare - Register</title>
+
+
+    <!-- Google Font -->
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+          rel="stylesheet">
+
+
+    <!-- Font Awesome -->
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        body {
+
+            min-height: 100vh;
+
+            font-family: 'Inter', sans-serif;
+
+            background: #f5f6f8;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            padding: 30px;
+
+            color: #30343b;
+        }
+
+
+        /* =================================
+           MAIN CONTAINER
+        ================================= */
+
+        .register-container {
+
+            width: 100%;
+
+            max-width: 1050px;
+
+            min-height: 650px;
+
+            display: flex;
+
+            overflow: hidden;
+
+            border-radius: 24px;
+
+            background: #f9f7f2;
+
+            box-shadow:
+                0 18px 50px rgba(45, 42, 38, 0.12);
+
+            border: 1px solid #e7e3dc;
+        }
+
+
+        /* =================================
+           IMAGE SECTION
+        ================================= */
+
+        .image-section {
+
+            width: 45%;
+
+            min-height: 650px;
+
+            position: relative;
+
+            background-image:
+
+                linear-gradient(
+                    rgba(55, 43, 35, 0.18),
+                    rgba(55, 43, 35, 0.40)
+                ),
+
+                url("{% static 'images/food-login.jpg' %}");
+
+            background-size: cover;
+
+            background-position: center;
+        }
+
+
+        /* IMAGE OVERLAY */
+
+        .image-section::after {
+
+            content: "";
+
+            position: absolute;
+
+            inset: 0;
+
+            background:
+
+                linear-gradient(
+                    180deg,
+                    rgba(35, 29, 25, 0.05),
+                    rgba(35, 29, 25, 0.48)
+                );
+        }
+
+
+        /* =================================
+           IMAGE CONTENT
+        ================================= */
+
+        .image-content {
+
+            position: absolute;
+
+            z-index: 2;
+
+            left: 40px;
+
+            right: 40px;
+
+            bottom: 45px;
+
+            color: white;
+        }
+
+
+        .brand {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 10px;
+
+            font-size: 23px;
+
+            font-weight: 800;
+
+            margin-bottom: 20px;
+        }
+
+
+        .brand-icon {
+
+            width: 42px;
+
+            height: 42px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            border-radius: 11px;
+
+            background: rgba(255,255,255,0.20);
+
+            backdrop-filter: blur(8px);
+
+            border: 1px solid rgba(255,255,255,0.25);
+        }
+
+
+        .image-content h1 {
+
+            font-size: 32px;
+
+            line-height: 1.2;
+
+            margin-bottom: 13px;
+
+            letter-spacing: -0.8px;
+        }
+
+
+        .image-content p {
+
+            font-size: 13px;
+
+            line-height: 1.7;
+
+            color: rgba(255,255,255,0.90);
+
+            margin-bottom: 25px;
+        }
+
+
+        /* =================================
+           FEATURES
+        ================================= */
+
+        .features {
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 12px;
+        }
+
+
+        .feature {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 10px;
+
+            font-size: 12px;
+
+            color: rgba(255,255,255,0.92);
+        }
+
+
+        .feature i {
+
+            width: 27px;
+
+            height: 27px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            border-radius: 7px;
+
+            background: rgba(255,255,255,0.15);
+
+            font-size: 11px;
+        }
+
+
+        /* =================================
+           RIGHT REGISTER SECTION
+        ================================= */
+
+        .register-section {
+
+            width: 55%;
+
+            background: #f9f7f2;
+
+            padding: 45px 55px;
+
+            display: flex;
+
+            flex-direction: column;
+
+            justify-content: center;
+        }
+
+
+        .small-title {
+
+            color: #9a654c;
+
+            font-size: 11px;
+
+            font-weight: 700;
+
+            letter-spacing: 1.5px;
+
+            text-transform: uppercase;
+
+            margin-bottom: 10px;
+        }
+
+
+        .register-section h2 {
+
+            font-size: 29px;
+
+            font-weight: 800;
+
+            color: #30343b;
+
+            margin-bottom: 7px;
+        }
+
+
+        .subtitle {
+
+            color: #77736e;
+
+            font-size: 13px;
+
+            line-height: 1.6;
+
+            margin-bottom: 23px;
+        }
+
+
+        /* =================================
+           DJANGO FORM
+        ================================= */
+
+        form p {
+
+            margin-bottom: 13px;
+        }
+
+
+        form label {
+
+            display: block;
+
+            color: #4c4a47;
+
+            font-size: 12px;
+
+            font-weight: 600;
+
+            margin-bottom: 6px;
+        }
+
+
+        form input,
+        form textarea,
+        form select {
+
+            width: 100%;
+
+            border: 1px solid #ddd8cf;
+
+            border-radius: 9px;
+
+            background: #fffdf9;
+
+            padding: 11px 13px;
+
+            outline: none;
+
+            font-family: 'Inter', sans-serif;
+
+            font-size: 12px;
+
+            color: #30343b;
+
+            transition: 0.2s;
+        }
+
+
+        form input {
+
+            height: 43px;
+        }
+
+
+        form textarea {
+
+            min-height: 65px;
+
+            resize: vertical;
+        }
+
+
+        form select {
+
+            height: 43px;
+
+            cursor: pointer;
+        }
+
+
+        form input::placeholder,
+        form textarea::placeholder {
+
+            color: #aaa59e;
+        }
+
+
+        form input:focus,
+        form textarea:focus,
+        form select:focus {
+
+            border-color: #b5795d;
+
+            background: #ffffff;
+
+            box-shadow:
+                0 0 0 3px rgba(181,121,93,0.10);
+        }
+
+
+        /* Django help text */
+
+        form .helptext {
+
+            display: block;
+
+            margin-top: 4px;
+
+            color: #99948e;
+
+            font-size: 10px;
+
+            line-height: 1.4;
+        }
+
+
+        /* Django error */
+
+        form ul.errorlist {
+
+            list-style: none;
+
+            padding: 0;
+
+            margin: 5px 0;
+
+            color: #a94442;
+
+            font-size: 11px;
+        }
+
+
+        /* =================================
+           REGISTER BUTTON
+        ================================= */
+
+        .register-btn {
+
+            width: 100%;
+
+            height: 48px;
+
+            border: none;
+
+            border-radius: 10px;
+
+            background: #9a654c;
+
+            color: white;
+
+            font-family: 'Inter', sans-serif;
+
+            font-size: 13px;
+
+            font-weight: 700;
+
+            cursor: pointer;
+
+            margin-top: 7px;
+
+            transition: 0.25s;
+        }
+
+
+        .register-btn i {
+
+            margin-right: 7px;
+        }
+
+
+        .register-btn:hover {
+
+            background: #81523e;
+
+            transform: translateY(-1px);
+
+            box-shadow:
+                0 8px 18px rgba(129,82,62,0.18);
+        }
+
+
+        /* =================================
+           LOGIN LINK
+        ================================= */
+
+        .login-text {
+
+            text-align: center;
+
+            margin-top: 20px;
+
+            padding-top: 18px;
+
+            border-top: 1px solid #e6e1d9;
+
+            color: #77736e;
+
+            font-size: 12px;
+        }
+
+
+        .login-text a {
+
+            color: #9a654c;
+
+            font-weight: 700;
+
+            text-decoration: none;
+
+            margin-left: 4px;
+        }
+
+
+        .login-text a:hover {
+
+            color: #81523e;
+
+            text-decoration: underline;
+        }
+
+
+        /* =================================
+           RESPONSIVE
+        ================================= */
+
+        @media (max-width: 850px) {
+
+            body {
+
+                padding: 15px;
+            }
+
+
+            .register-container {
+
+                max-width: 550px;
+
+                flex-direction: column;
+            }
+
+
+            .image-section {
+
+                width: 100%;
+
+                min-height: 320px;
+            }
+
+
+            .register-section {
+
+                width: 100%;
+
+                padding: 40px 35px;
+            }
+
+
+            .image-content {
+
+                left: 30px;
+
+                right: 30px;
+
+                bottom: 30px;
+            }
+
+
+            .image-content h1 {
+
+                font-size: 27px;
+            }
+        }
+
+
+        @media (max-width: 450px) {
+
+            .image-section {
+
+                min-height: 280px;
+            }
+
+
+            .register-section {
+
+                padding: 35px 25px;
+            }
+
+
+            .image-content h1 {
+
+                font-size: 24px;
+            }
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<div class="register-container">
+
+
+    <!-- =================================
+         IMAGE SECTION
+    ================================= -->
+
+    <div class="image-section">
+
+
+        <div class="image-content">
+
+
+            <div class="brand">
+
+                <div class="brand-icon">
+
+                    <i class="fa-solid fa-bowl-food"></i>
+
+                </div>
+
+                FoodShare
+
+            </div>
+
+
+            <h1>
+
+                Share food.
+                Reduce waste.
+                Create impact.
+
+            </h1>
+
+
+            <p>
+
+                Join FoodShare and connect surplus food
+                with people and organizations who need it.
+                Every contribution can make a difference.
+
+            </p>
+
+
+            <div class="features">
+
+
+                <div class="feature">
+
+                    <i class="fa-solid fa-leaf"></i>
+
+                    Reduce Food Waste
+
+                </div>
+
+
+                <div class="feature">
+
+                    <i class="fa-solid fa-hand-holding-heart"></i>
+
+                    Donate Surplus Food
+
+                </div>
+
+
+                <div class="feature">
+
+                    <i class="fa-solid fa-people-group"></i>
+
+                    Connect with NGOs
+
+                </div>
+
+
+                <div class="feature">
+
+                    <i class="fa-solid fa-truck"></i>
+
+                    Support Food Collection
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+    <!-- =================================
+         REGISTER SECTION
+    ================================= -->
+
+    <div class="register-section">
+
+
+        <div class="small-title">
+
+            JOIN FOODSHARE
+
+        </div>
+
+
+        <h2>
+
+            Create Account
+
+        </h2>
+
+
+        <p class="subtitle">
+
+            Create your account and start making
+            a difference in your community.
+
+        </p>
+
+
+        <form method="POST">
+
+            {% csrf_token %}
+
+
+            {{ form.as_p }}
+
+
+            <button
+                type="submit"
+                class="register-btn">
+
+                <i class="fa-solid fa-user-plus"></i>
+
+                Create Account
+
+            </button>
+
+
+        </form>
+
+
+        <p class="login-text">
+
+            Already have an account?
+
+            <a href="{% url 'login' %}">
+
+                Sign In
+
+            </a>
+
+        </p>
+
+
+    </div>
+
+
+</div>
+
+
+</body>
+
+</html>
